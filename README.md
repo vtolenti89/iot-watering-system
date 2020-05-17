@@ -1,4 +1,4 @@
-# iot-watering-system
+# IoT Watering System
 Automated low power watering system 
 
 # Overview
