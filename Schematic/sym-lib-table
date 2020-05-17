@@ -1,0 +1,7 @@
+(sym_lib_table
+  (lib (name cl-connectors)(type Legacy)(uri ${KIPRJMOD}/../../../MyLibraries/custom-library/custom-symbols/cl-connectors.lib)(options "")(descr ""))
+  (lib (name cl-integrated_circuits)(type Legacy)(uri ${KIPRJMOD}/../../../MyLibraries/custom-library/custom-symbols/cl-integrated_circuits.lib)(options "")(descr ""))
+  (lib (name cl-misc)(type Legacy)(uri ${KIPRJMOD}/../../../MyLibraries/custom-library/custom-symbols/cl-misc.lib)(options "")(descr ""))
+  (lib (name cl-semiconductors)(type Legacy)(uri ${KIPRJMOD}/../../../MyLibraries/custom-library/custom-symbols/cl-semiconductors.lib)(options "")(descr ""))
+  (lib (name WateringSystem-rescue)(type Legacy)(uri ${KIPRJMOD}/WateringSystem-rescue.lib)(options "")(descr ""))
+)
