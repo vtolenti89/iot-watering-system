@@ -10,6 +10,13 @@ an arduino controlled pump.
 
 ![Block diagram](https://github.com/vtolenti89/iot-watering-system/blob/master/Docs/block_diagram.png)
 
-# todo
+# TODO
+* Implement the display
+* Implement again wifi with low power option
+
+# History
+* Implement a second code version, where the wifi is disabled and the power consumption is drastically
+reduced by hardware modification and use of deep sleep routines
+* Implement first version with wifi
 
 
