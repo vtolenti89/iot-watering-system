@@ -1,13 +1,13 @@
 #include <avr/sleep.h>
 #include <avr/wdt.h>
 
-unsigned long previousMillis, currentMillis = 0;
+unsigned long previousMillis, secondCounter, currentMillis = 0;
 const long interval = 1000;
-const unsigned long watchdogInterval = 60*60*6 /8; // called every 8 seconds -> 60 * 60 * 6 = 6 hours;
+const unsigned long watchdogInterval = 60 * 60 * 6 / 8; // called every 8 seconds -> 60 * 60 * 6 = 1 hours;
 long watchdogCounter = watchdogInterval;
 long int lWaterLevel = 0;
 long unsigned motorCounter = 0;
-const long motorOnTime = 60 * 20; // twenty minutes on
+const long motorOnTime = 20; // twenty minutes on
 
 enum waterLevelStates {
   WL_0 = 0, // water level is empty
@@ -22,6 +22,7 @@ enum waterLevelStates {
 const int motorPWM = PB1;
 const int lWaterLevelPin = A0;
 const int sWaterLevelPin = PC1;
+
 const int led = PB5;
 
 //motor and water level settings
@@ -44,19 +45,30 @@ void setup()
 
 void loop()
 {
+  //PORTB |= (1 << led);
   currentMillis = millis();
 
   if (currentMillis - previousMillis >= interval) {
     previousMillis = currentMillis;
-    PORTB |= (1 << motorPWM);
+    //  PORTB |= (1 << motorPWM);
     //PORTB |= (1 << led);
+
+    //    motorCounter++;
+    secondCounter++;
+  }
+
+  if (secondCounter >= 60) {
+    secondCounter = 0;
+
+    PORTB |= (1 << motorPWM);
+    PORTB |= (1 << led);
     //watchdogCounter = 0;
     motorCounter++;
   }
 
   if (motorCounter > motorOnTime) {
     PORTB &= ~ (1 << motorPWM);
-    //PORTB &= ~ (1 << led);
+    PORTB &= ~ (1 << led);
     motorCounter = 0;
     watchdogCounter = 0;
   }
@@ -64,6 +76,10 @@ void loop()
   if (watchdogCounter < watchdogInterval) {
     // Keep device sleeping
     previousMillis = currentMillis;
+    PORTB &= ~ (1 << motorPWM);
+    PORTB &= ~ (1 << led);
+    motorCounter=0;
+    secondCounter=0;
     enablePowerSave();
   }
 
