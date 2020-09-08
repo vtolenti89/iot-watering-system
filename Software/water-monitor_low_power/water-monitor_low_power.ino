@@ -3,8 +3,8 @@
 
 unsigned long previousMillis, secondCounter, currentMillis = 0;
 const long interval = 1000;
-const unsigned long watchdogInterval = 60 * 60 * 6 / 8; // called every 8 seconds -> 60 * 60 * 6 = 1 hours;
-long watchdogCounter = watchdogInterval;
+const unsigned long watchdogInterval = 60 * 60 * 24 / 8; // called every 8 seconds -> 60 * 60 * 24 = 24 hours;
+unsigned long watchdogCounter = watchdogInterval;
 long int lWaterLevel = 0;
 long unsigned motorCounter = 0;
 const long motorOnTime = 20; // twenty minutes on
